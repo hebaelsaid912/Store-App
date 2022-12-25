@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.feature.productdetails.ProductListFragment">
+        tools:context=".ui.feature.productlist.ProductListFragment">
 
         <ImageView
             android:id="@+id/shopping_bag_img"
