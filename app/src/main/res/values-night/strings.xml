@@ -4,4 +4,7 @@
     <string name="catalog">Catalog</string>
     <string name="the_most_popular_n_items_today">The most popular\n items today</string>
     <string name="product_image">product image</string>
+    <string name="rating">Rating</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="vote">vote</string>
 </resources>
