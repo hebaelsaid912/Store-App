@@ -11,6 +11,6 @@ data class ProductResponseModel(
 ) {
     data class Rating(
         val count: Int?, // 120
-        val rate: Double? // 3.9
+        val rate: Float? // 3.9
     )
 }

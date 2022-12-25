@@ -28,7 +28,7 @@ class ProductDetailsViewModel @Inject constructor(
         object Idle : ProductDetailsState()
     }
 
-    private fun getProductDetails(id:Int) {
+     fun getProductDetails(id:Int) {
         productDetailsUseCase(id = id).onEach { resultState ->
             when (resultState) {
                 is Resource.Success -> {
