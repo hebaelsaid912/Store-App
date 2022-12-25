@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.hebaelsaid.android.storeapp.databinding.FragmentProductDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,6 +36,19 @@ class ProductDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getProductDetails(id = productId)
+        binding.backImgDetails.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        binding.likeImgDetails.setOnClickListener {
+            binding.likeImgDetails.visibility = View.GONE
+            binding.likedImgDetails.visibility = View.VISIBLE
+            Toast.makeText(requireContext(),"Product liked",Toast.LENGTH_LONG).show()
+        }
+        binding.likedImgDetails.setOnClickListener {
+            binding.likeImgDetails.visibility = View.VISIBLE
+            binding.likedImgDetails.visibility = View.GONE
+            Toast.makeText(requireContext(),"Product unliked",Toast.LENGTH_LONG).show()
+        }
         renderProductDetails()
     }
 
