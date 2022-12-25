@@ -1,7 +1,10 @@
 package com.hebaelsaid.android.storeapp.ui.feature.productlist
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -61,6 +64,16 @@ class ProductListAdapter(private val onItemClickListener: ProductListViewHolder.
             binding.executePendingBindings()
             itemView.setOnClickListener {
                 onItemClickListener.onItemClick(obj.id)
+            }
+            binding.likeImgHome.setOnClickListener {
+                binding.likeImgHome.visibility = View.GONE
+                binding.likedImgHome.visibility = View.VISIBLE
+                Toast.makeText(it.context,"Product liked", Toast.LENGTH_LONG).show()
+            }
+            binding.likedImgHome.setOnClickListener {
+                binding.likeImgHome.visibility = View.VISIBLE
+                binding.likedImgHome.visibility = View.GONE
+                Toast.makeText(it.context,"Product unliked", Toast.LENGTH_LONG).show()
             }
         }
 
