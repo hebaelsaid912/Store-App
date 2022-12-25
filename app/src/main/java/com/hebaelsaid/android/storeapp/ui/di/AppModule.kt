@@ -1,7 +1,10 @@
 package com.hebaelsaid.android.storeapp.ui.di
 
 import com.hebaelsaid.android.storeapp.data.remote.StoreApiInterface
+import com.hebaelsaid.android.storeapp.data.repository.StoreApiRepoImpl
+import com.hebaelsaid.android.storeapp.domain.repository.StoreApIRepo
 import com.hebaelsaid.android.storeapp.utils.Constants.BASE_URL
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,4 +25,12 @@ object AppModule {
             .build()
             .create(StoreApiInterface::class.java)
     }
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class DataPort{
+    @Binds
+    @Singleton
+    abstract fun bindCoffeeMenuRepo( impl: StoreApiRepoImpl):StoreApIRepo
 }
