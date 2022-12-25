@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.hebaelsaid.android.storeapp.ui.feature.splash.SplashFragment"
+        tools:layout="@layout/fragment_splash"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_productListFragment"
+            app:destination="@id/productListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productListFragment"
+        android:name="com.hebaelsaid.android.storeapp.ui.feature.productdetails.ProductListFragment"
+        tools:layout="@layout/fragment_product_list"
+        android:label="ProductListFragment" >
+        <action
+            android:id="@+id/action_productListFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.hebaelsaid.android.storeapp.ui.feature.productlist.ProductDetailsFragment"
+        tools:layout="@layout/fragment_product_details"
+        android:label="ProductDetailsFragment" />
+</navigation>
