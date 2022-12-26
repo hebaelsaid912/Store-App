@@ -12,7 +12,9 @@
         android:label="SplashFragment" >
         <action
             android:id="@+id/action_splashFragment_to_productListFragment"
-            app:destination="@id/productListFragment" />
+            app:destination="@id/productListFragment"
+            app:popUpTo="@id/main_nav"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/productListFragment"
@@ -21,7 +23,9 @@
         android:label="ProductListFragment" >
         <action
             android:id="@+id/action_productListFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
+            app:destination="@id/productDetailsFragment"
+            app:popUpTo="@id/productListFragment"
+            app:popUpToInclusive="false"/>
     </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"
