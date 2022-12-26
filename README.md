@@ -9,7 +9,7 @@ you can clone code and run it using :
 
 ``
   IDE : Android Studio
-  kotlinCompilerExtensionVersion: 1.2.0-rc02
+  kotlin_version = '1.7.10'
   Compile Sdk : 33
 ``
 
