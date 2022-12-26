@@ -20,12 +20,14 @@ you can clone code and run it using :
     <th>Home</th>
     <th>Product Details 1</th>
     <th>Product Details 2</th>
+    <th>Connection </th>
   </tr>
   <tr>
     <td><img src="https://user-images.githubusercontent.com/72816466/209556665-8a0e1306-9ce3-4f35-9b44-7e8c63c1c620.jpg" width="350"></td>
     <td><img src="https://user-images.githubusercontent.com/72816466/209556681-73123fde-9569-4d91-aa92-1bdfda63d2f7.jpg" width="350"></td>
     <td><img src="https://user-images.githubusercontent.com/72816466/209556701-4e6f0f45-1538-46f6-ab89-1be4dfce1b32.jpg" width="350"></td>
     <td><img src="https://user-images.githubusercontent.com/72816466/209556707-529c0d0b-f51a-448c-afbb-406085e04ce1.jpg" width="350"></td>
+    <td><img src="https://user-images.githubusercontent.com/72816466/209557115-14c83f44-6f14-4619-ad30-0cb4deed1c99.jpg" width="350"></td>
   </tr>
 </table> 
 
