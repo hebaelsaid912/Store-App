@@ -8,4 +8,6 @@
     <string name="add_to_cart">Add to cart</string>
     <string name="vote">vote</string>
     <string name="product_price_format">"$ %s"</string>
+    <string name="there_is_no_internet_connection">There is no internet connection</string>
+    <string name="please_check_your_internet_connection">Please, check your internet connection</string>
 </resources>

@@ -71,6 +71,7 @@
             app:layout_constraintTop_toBottomOf="@+id/like_img_details" />
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/content_scrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fillViewport="true"
@@ -213,6 +214,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="20dp" />
+        <include
+            android:id="@+id/not_internet_connection_layout"
+            layout="@layout/no_internet_connection"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

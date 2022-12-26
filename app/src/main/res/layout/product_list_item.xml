@@ -29,7 +29,9 @@
             <ImageView
                 android:id="@+id/product_img_home"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_180sdp"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:maxHeight="@dimen/_250sdp"
                 android:bindImgUrl="@{model.image}"
                 android:bindProgressItem="@{progressBar}"
                 tools:srcCompat="@tools:sample/backgrounds/scenic"

@@ -30,7 +30,7 @@ class ProductListViewModel @Inject constructor(
     init {
         getProductList()
     }
-    private fun getProductList() {
+     fun getProductList() {
         productListUseCase().onEach { resultState ->
             when (resultState) {
                 is Resource.Success -> {

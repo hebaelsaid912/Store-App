@@ -1,5 +1,7 @@
 package com.hebaelsaid.android.storeapp.ui.feature.productdetails
 
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,11 +13,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hebaelsaid.android.storeapp.databinding.FragmentProductDetailsBinding
+import com.hebaelsaid.android.storeapp.utils.ConnectivityReceiver
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "ProductDetailsFragment"
 @AndroidEntryPoint
-class ProductDetailsFragment : Fragment() {
+class ProductDetailsFragment : Fragment(),
+    ConnectivityReceiver.ConnectivityReceiverListener {
     private lateinit var binding: FragmentProductDetailsBinding
     private val viewModel : ProductDetailsViewModel by viewModels()
     private var productId : Int = 0
@@ -30,6 +34,7 @@ class ProductDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProductDetailsBinding.inflate(inflater,container,false)
+        requireActivity().registerReceiver(ConnectivityReceiver(), IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
         return binding.root
     }
 
@@ -72,6 +77,25 @@ class ProductDetailsFragment : Fragment() {
                     }
                 }
             }
+    }
+
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        showNetworkMessage(isConnected)
+    }
+    override fun onResume() {
+        super.onResume()
+        ConnectivityReceiver.connectivityReceiverListener = this
+    }
+    private fun showNetworkMessage(isConnected: Boolean) {
+        if (!isConnected) {
+            binding.notInternetConnectionLayout.root.visibility = View.VISIBLE
+            binding.contentScrollView.visibility = View.GONE
+            binding.productImgDetails.visibility = View.GONE
+        } else {
+            binding.notInternetConnectionLayout.root.visibility = View.GONE
+            binding.contentScrollView.visibility = View.VISIBLE
+            binding.productImgDetails.visibility = View.VISIBLE
+        }
     }
 
 }

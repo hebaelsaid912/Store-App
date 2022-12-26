@@ -1,5 +1,7 @@
 package com.hebaelsaid.android.storeapp.ui.feature.productlist
 
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,11 +13,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hebaelsaid.android.storeapp.data.model.ProductListResponseModel
 import com.hebaelsaid.android.storeapp.databinding.FragmentProductListBinding
+import com.hebaelsaid.android.storeapp.utils.ConnectivityReceiver
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "ProductListFragment"
 @AndroidEntryPoint
-class ProductListFragment : Fragment() , ProductListAdapter.ProductListViewHolder.OnItemClickListener {
+class ProductListFragment : Fragment() , ProductListAdapter.ProductListViewHolder.OnItemClickListener,
+    ConnectivityReceiver.ConnectivityReceiverListener {
     private lateinit var binding: FragmentProductListBinding
     private val viewModel:ProductListViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +30,7 @@ class ProductListFragment : Fragment() , ProductListAdapter.ProductListViewHolde
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProductListBinding.inflate(inflater,container,false)
+        requireActivity().registerReceiver(ConnectivityReceiver(), IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
         return binding.root
     }
 
@@ -49,8 +54,9 @@ class ProductListFragment : Fragment() , ProductListAdapter.ProductListViewHolde
                     is ProductListViewModel.ProductListState.Loading -> {
                         Log.d(TAG, "renderProductListData: Loading")
                     }
-                    else -> {
-                        Log.d(TAG, "renderProductListData: else ")
+                    is ProductListViewModel.ProductListState.Idle -> {
+                        Log.d(TAG, "renderProductListData: Idle")
+                        viewModel.getProductList()
                     }
                 }
             }
@@ -67,4 +73,23 @@ class ProductListFragment : Fragment() , ProductListAdapter.ProductListViewHolde
         findNavController().navigate(ProductListFragmentDirections.actionProductListFragmentToProductDetailsFragment(productId.toString()))
     }
 
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        showNetworkMessage(isConnected)
+    }
+    override fun onResume() {
+        super.onResume()
+        ConnectivityReceiver.connectivityReceiverListener = this
+    }
+    private fun showNetworkMessage(isConnected: Boolean) {
+        if (!isConnected) {
+            binding.notInternetConnectionLayout.root.visibility = View.VISIBLE
+            binding.productListRv.visibility = View.GONE
+        } else {
+            binding.notInternetConnectionLayout.root.visibility = View.GONE
+            binding.productListRv.visibility = View.VISIBLE
+            if(binding.productListRv.adapter == null)
+                viewModel.getProductList()
+
+        }
+    }
 }
