@@ -3,11 +3,11 @@
     <style name="Theme.StoreApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/coffee_light</item>
-        <item name="colorPrimaryVariant">@color/coffee</item>
+        <item name="colorPrimaryVariant">@color/coffee_light</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/coffee_light</item>
-        <item name="colorSecondaryVariant">@color/coffee</item>
+        <item name="colorSecondaryVariant">@color/coffee_light</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
