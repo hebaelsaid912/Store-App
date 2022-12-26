@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.DiffUtil
+import com.hebaelsaid.android.storeapp.BR
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hebaelsaid.android.storeapp.data.model.ProductListResponseModel
@@ -60,7 +60,7 @@ class ProductListAdapter(private val onItemClickListener: ProductListViewHolder.
             obj: ProductListResponseModel.ProductListResponseModelItem,
             onItemClickListener: OnItemClickListener
         ) {
-            binding.model = obj
+            binding.setVariable(BR.model, obj)
             binding.executePendingBindings()
             itemView.setOnClickListener {
                 onItemClickListener.onItemClick(obj.id)

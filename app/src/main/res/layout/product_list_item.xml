@@ -19,10 +19,9 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/product_img_card_home"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/_20sdp"
-            app:cardElevation="@dimen/_5sdp"
-            android:padding="@dimen/_15sdp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_3sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
