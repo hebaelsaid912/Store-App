@@ -18,7 +18,7 @@ import javax.inject.Singleton
 object AppModule {
     @Provides
     @Singleton
-    fun provideCoffeeApiInterface(): StoreApiInterface {
+    fun provideStoreApiInterface(): StoreApiInterface {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -32,5 +32,5 @@ object AppModule {
 abstract class DataPort{
     @Binds
     @Singleton
-    abstract fun bindCoffeeMenuRepo( impl: StoreApiRepoImpl):StoreApIRepo
+    abstract fun bindStoreApiRepo( impl: StoreApiRepoImpl):StoreApIRepo
 }
